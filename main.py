@@ -72,8 +72,10 @@ if __name__ == '__main__':
     c = XboxController()
     while True:
         x,y,a,b,lookX,lookY = c.read()
-        if a != 0:
+        if a != 0: #play random sound from voicelines if a is pressed
             audio.play_random()
+        if b != 0: #emergency stop if b is pressed
+            motor.stop()
         motor.move(x,y)
         motor.look(lookX,lookY)
         sleep(0.1)
